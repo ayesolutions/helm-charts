@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kroki.fullname" . }}
+  labels:
+    {{- include "kroki.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 8000
+      protocol: TCP
+      name: http-gateway
+    {{- if .Values.blockdiag.enabled }}
+    - port: 8001
+      targetPort: 8001
+      protocol: TCP
+      name: http-blockdiag
+    {{- end }}
+    {{- if .Values.mermaid.enabled }}
+    - port: 8002
+      targetPort: 8002
+      protocol: TCP
+      name: http-mermaid
+    {{- end }}
+    {{- if .Values.bpmn.enabled }}
+    - port: 8003
+      targetPort: 8003
+      protocol: TCP
+      name: http-bpmn
+    {{- end }}
+    {{- if .Values.excalidraw.enabled }}
+    - port: 8004
+      targetPort: 8004
+      protocol: TCP
+      name: http-excalidraw
+    {{- end }}
+  selector:
+    {{- include "kroki.selectorLabels" . | nindent 4 }}
