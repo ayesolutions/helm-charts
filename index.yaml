@@ -1,0 +1,47 @@
+apiVersion: v1
+entries:
+  drawio:
+  - apiVersion: v2
+    appVersion: 21.5.2
+    created: "2023-08-15T18:49:46.255661153+02:00"
+    description: A Helm chart for draw.io
+    digest: c2a285f49a774421503f48bd64e9f07fa34913e18e34971f2fe2a389d7a0987d
+    name: drawio
+    type: application
+    urls:
+    - drawio-0.2.2.tgz
+    version: 0.2.2
+  kroki:
+  - apiVersion: v2
+    appVersion: 0.21.3
+    created: "2023-08-15T18:49:46.475953627+02:00"
+    description: A Helm chart for Kroki Diagrams
+    digest: a0877640457d9c9c36d78831e30640b3677b24f02ebd1b45c8d4a4987bbd9579
+    name: kroki
+    type: application
+    urls:
+    - kroki-0.2.2.tgz
+    version: 0.2.2
+  plantuml:
+  - apiVersion: v2
+    appVersion: v1.2023.10
+    created: "2023-08-15T18:49:46.797864234+02:00"
+    description: A Helm chart for PlantUML Server
+    digest: 93be7e9076c302749d35a8932f70db84d2389b33d613eaa5f6fbbc918a09edb9
+    name: plantuml
+    type: application
+    urls:
+    - plantuml-0.2.1.tgz
+    version: 0.2.1
+  shieldsio:
+  - apiVersion: v2
+    appVersion: server-2023-08-01
+    created: "2023-08-15T18:49:47.412690889+02:00"
+    description: A Helm chart for shields.io
+    digest: a1192d891185f91d2a74ce8cada494a7d961738f88ddef8a9b3b6877e6789262
+    name: shieldsio
+    type: application
+    urls:
+    - shieldsio-0.1.1.tgz
+    version: 0.1.1
+generated: "2023-08-15T18:49:47.412720578+02:00"
