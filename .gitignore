@@ -23,3 +23,7 @@
 .vscode/
 
 build/
+
+.cr-release-packages/
+index.yaml
+tmp-*.sh
