@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wg-gen-web.fullname" . }}
+  labels:
+    {{- include "wg-gen-web.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "wg-gen-web.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "wg-gen-web.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "wg-gen-web.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: SERVER
+              value: "0.0.0.0"
+            - name: PORT
+              value: {{ .Values.service.port }}
+            - name: WG_CONF_DIR
+              value: {{ .Values.config.path }}
+            - name: WG_INTERFACE_NAME
+              value: "{{ .Values.config.name }}.conf"
+            {{- if .Values.smtp.enabled }}
+            - name: SMTP_HOST
+              value: {{ .Values.smtp.host }}
+            - name: SMTP_PORT
+              value: {{ .Values.smtp.port }}
+            - name: SMTP_USERNAME
+              value: {{ .Values.smtp.username }}
+            - name: SMTP_PASSWORD
+              value: {{ .Values.smtp.password }}
+            - name: SMTP_FROM
+              value: {{ .Values.smtp.from }}
+            {{- end }}
+            {{- if .Values.oauth.enabled }}
+            - name: OAUTH2_PROVIDER_NAME
+              value: {{ .Values.oauth.name }}
+            - name: OAUTH2_PROVIDER
+              value: {{ .Values.oauth.url }}
+            - name: OAUTH2_CLIENT_ID
+              value: {{ .Values.oauth.clientId }}
+            - name: OAUTH2_CLIENT_SECRET
+              value: {{ .Values.oauth.clientPassword }}
+            - name: OAUTH2_REDIRECT_URL
+              value: {{ .Values.oauth.redirectUrl }}
+            {{- else }}
+            - name: OAUTH2_PROVIDER_NAME
+              value: "fake"
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
