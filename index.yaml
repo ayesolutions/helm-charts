@@ -44,4 +44,15 @@ entries:
     urls:
     - shieldsio-0.1.1.tgz
     version: 0.1.1
-generated: "2023-08-15T19:36:47.638676036+02:00"
+  wg-gen-web:
+  - apiVersion: v2
+    appVersion: sha-4fd1e34f
+    created: "2023-08-23T14:46:25.036237662+02:00"
+    description: A Helm chart for Wireguard UI
+    digest: 4048d84a51d6b2a9b646d33b6c1516bc2a9f753e4afb9615fcb4c662d093b331
+    name: wg-gen-web
+    type: application
+    urls:
+    - wg-gen-web-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-08-23T14:46:25.036267461+02:00"
