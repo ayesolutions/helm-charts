@@ -47,6 +47,16 @@ entries:
   wg-gen-web:
   - apiVersion: v2
     appVersion: sha-4fd1e34f
+    created: "2023-08-23T18:16:03.191416234+02:00"
+    description: A Helm chart for Wireguard UI
+    digest: a01fea3a810b5b0bd7af31fa5fd6eebdd1bffad9dbdda0cc0dcfdbb0df39f2cb
+    name: wg-gen-web
+    type: application
+    urls:
+    - wg-gen-web-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: sha-4fd1e34f
     created: "2023-08-23T15:36:59.638835236+02:00"
     description: A Helm chart for Wireguard UI
     digest: 38e3f55efd687a0a0e7b6ab16513de385ccd1213b05521be3b898098e003dec8
@@ -65,4 +75,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-23T15:36:59.638868611+02:00"
+generated: "2023-08-23T18:16:03.191731735+02:00"
