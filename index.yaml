@@ -22,6 +22,17 @@ entries:
     urls:
     - kroki-0.2.2.tgz
     version: 0.2.2
+  mongo-express:
+  - apiVersion: v2
+    appVersion: 0.54.0
+    created: "2023-09-12T11:37:23.722141+02:00"
+    description: A Helm chart for mongo-express
+    digest: 26593474a254b65de3a8561e8ebd8e7c7ec8123b0f9f4a68825f4ea940141e4b
+    name: mongo-express
+    type: application
+    urls:
+    - mongo-express-0.1.0.tgz
+    version: 0.1.0
   plantuml:
   - apiVersion: v2
     appVersion: v1.2023.10
@@ -75,4 +86,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-23T18:16:03.191731735+02:00"
+generated: "2023-09-12T11:37:24.923755+02:00"
