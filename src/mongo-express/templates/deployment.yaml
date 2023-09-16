@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mongo-express.fullname" . }}
+  labels:
+    {{- include "mongo-express.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "mongo-express.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "mongo-express.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "mongo-express.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: ME_CONFIG_BASICAUTH_USERNAME
+              value: {{ .Values.mongoexpress.basicAuth.username }}
+            - name: ME_CONFIG_BASICAUTH_PASSWORD
+              value: {{ .Values.mongoexpress.basicAuth.password }}
+            - name: ME_CONFIG_MONGODB_ENABLE_ADMIN
+              value: {{ .Values.mongoexpress.admin.enabled }}
+            - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+              value: {{ .Values.mongoexpress.admin.username }}
+            - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+              value: {{ .Values.mongoexpress.admin.password }}
+            - name: ME_CONFIG_MONGODB_PORT
+              value: {{ .Values.mongoexpress.port }}
+            - name: ME_CONFIG_MONGODB_SERVER
+              value: {{ .Values.mongoexpress.host }}
+            - name: ME_CONFIG_MONGODB_AUTH_DATABASE
+              value: {{ .Values.mongoexpress.auth.database }}
+            - name: ME_CONFIG_MONGODB_AUTH_USERNAME
+              value: {{ .Values.mongoexpress.auth.username }}
+            - name: ME_CONFIG_MONGODB_AUTH_PASSWORD
+              value: {{ .Values.mongoexpress.auth.password }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
