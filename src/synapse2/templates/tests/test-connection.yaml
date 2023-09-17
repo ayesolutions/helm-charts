@@ -3,13 +3,13 @@ kind: Pod
 metadata:
   name: "{{ include "synapse.fullname" . }}-test-connection"
   labels:
-    {{- include "synapse.labels" . | nindent 4 }}
+{{ include "synapse.labels" . | indent 4 }}
   annotations:
-    "helm.sh/hook": test
+    "helm.sh/hook": test-success
 spec:
   containers:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "synapse.fullname" . }}:{{ .Values.service.port }}']
+      args:  ['{{ include "synapse.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
