@@ -21,6 +21,22 @@ entries:
     urls:
     - drawio-0.2.2.tgz
     version: 0.2.2
+  hedgedoc:
+  - apiVersion: v2
+    appVersion: 1.9.9
+    created: "2023-09-22T15:12:20.511623147+02:00"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~12.11.0
+    description: A Helm chart for HedgeDoc
+    digest: b01e100c8f27ce0bf494c0ec4ed78bfc8e7a8bb3e00f66baeba51e6b1efa3046
+    name: hedgedoc
+    type: application
+    urls:
+    - hedgedoc-0.1.0.tgz
+    version: 0.1.0
   kroki:
   - apiVersion: v2
     appVersion: 0.21.3
@@ -135,4 +151,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-20T21:36:15.352620695+02:00"
+generated: "2023-09-22T15:12:22.696854798+02:00"
