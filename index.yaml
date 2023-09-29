@@ -140,6 +140,28 @@ entries:
     urls:
     - mongo-express-0.1.0.tgz
     version: 0.1.0
+  mosquitto:
+  - apiVersion: v2
+    appVersion: 2.0.18
+    created: "2023-09-29T19:33:28.044758036Z"
+    description: A Helm chart for Mosquitto MQTT
+    digest: ee7f9c134fdb472258bfb4e3605617a9926b4bd8906e28aa6f6d4ed378f2654b
+    name: mosquitto
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/mosquitto-0.1.0/mosquitto-0.1.0.tgz
+    version: 0.1.0
+  nodered:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-09-29T19:33:28.176459999Z"
+    description: A Helm chart for Kubernetes
+    digest: a7d2af5356eedd83b5d152434f407916f11fff2cae4025df46e0a1863a4ebeb0
+    name: nodered
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/nodered-0.1.0/nodered-0.1.0.tgz
+    version: 0.1.0
   plantuml:
   - apiVersion: v2
     appVersion: v1.2023.10
@@ -201,6 +223,29 @@ entries:
     urls:
     - synapse-0.24.0.tgz
     version: 0.24.0
+  - apiVersion: v2
+    appVersion: v1.92.2
+    created: "2023-09-29T19:33:28.63644376Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~12.11.0
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~18.0.0
+    - condition: nginx.enabled
+      name: nginx
+      repository: https://charts.bitnami.com/bitnami
+      version: ~15.2.0
+    description: The reference implementation for a Matrix.org chat server
+    digest: 84a38c8ba6444d680f6505900586e775230bbbe57f302bea8585897dfbaa55a0
+    name: synapse
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/synapse-0.1.0/synapse-0.1.0.tgz
+    version: 0.1.0
   wg-gen-web:
   - apiVersion: v2
     appVersion: sha-4fd1e34f
@@ -232,4 +277,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-29T20:26:45.015859696+02:00"
+generated: "2023-09-29T19:33:28.636607662Z"
