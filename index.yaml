@@ -175,6 +175,25 @@ entries:
   heimdall:
   - apiVersion: v2
     appVersion: 2.5.6
+    created: "2023-09-29T20:58:40.369222376Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~12.11.0
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: ~18.0.0
+    description: A Helm chart for Heimdall Dashboard
+    digest: 0de6eb471b1da5abf2140de28ccf206857e0e3d3d299a490a0b067c66ce0b14f
+    name: heimdall
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/heimdall-0.3.0/heimdall-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 2.5.6
     created: "2023-09-29T20:35:37.794914089Z"
     dependencies:
     - condition: postgresql.enabled
@@ -391,4 +410,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-29T20:35:38.366005601Z"
+generated: "2023-09-29T20:58:40.369335777Z"
