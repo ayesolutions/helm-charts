@@ -37,6 +37,17 @@ entries:
     urls:
     - hedgedoc-0.1.0.tgz
     version: 0.1.0
+  heimdall:
+  - apiVersion: v2
+    appVersion: 2.5.6
+    created: "2023-09-29T14:16:05.020965252+02:00"
+    description: A Helm chart for Heimdall Dashboard
+    digest: 398e541f63608335837b72c85b0254d6ab469ff7100cab18d5a50c151fb90b34
+    name: heimdall
+    type: application
+    urls:
+    - heimdall-0.1.0.tgz
+    version: 0.1.0
   kroki:
   - apiVersion: v2
     appVersion: 0.21.3
@@ -151,4 +162,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-22T15:12:22.696854798+02:00"
+generated: "2023-09-29T14:16:07.453469178+02:00"
