@@ -3,6 +3,16 @@ entries:
   drawio:
   - apiVersion: v2
     appVersion: 22.0.0
+    created: "2023-09-29T20:26:42.501719914+02:00"
+    description: A Helm chart for draw.io
+    digest: 47909992f69956b64dfa72e42d1678b05203f6a50785d0cf4f0eb4dde1d266be
+    name: drawio
+    type: application
+    urls:
+    - drawio-0.4.6.tgz
+    version: 0.4.6
+  - apiVersion: v2
+    appVersion: 22.0.0
     created: "2023-09-29T20:16:13.971784837+02:00"
     description: A Helm chart for draw.io
     digest: 16fbd415f78dfe8b09a737ee0e15711c4b9fef9d1dbaf9169b3229d20a81641d
@@ -222,4 +232,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-09-29T20:16:16.917875594+02:00"
+generated: "2023-09-29T20:26:45.015859696+02:00"
