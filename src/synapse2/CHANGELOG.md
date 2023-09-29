@@ -1,1 +1,0 @@
-- "**deps:** update dock.mau.dev/mautrix/instagram docker tag to v0.3.0 ([3fa69ee](https://github.com/halkeye/helm-charts/commit/3fa69eed0442721c6d50de960152d73e823441d6))"
