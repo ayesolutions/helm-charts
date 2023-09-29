@@ -8,7 +8,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 8000
+      targetPort: http-gateway
       protocol: TCP
       name: http-gateway
     {{- if .Values.blockdiag.enabled }}
