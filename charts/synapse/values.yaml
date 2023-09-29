@@ -9,7 +9,7 @@ global:
   domain: chart-example.local
   dataDirectory: /data
   configDirectory: /config
-  configPath: {{ .Values.global.configDirectory }}/homeserver.yaml
+  configPath: /config/homeserver.yaml
   uid: 991
   gid: 991
 
