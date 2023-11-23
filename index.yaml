@@ -337,6 +337,16 @@ entries:
     version: 0.2.1
   shieldsio:
   - apiVersion: v2
+    appVersion: server-2023-11-01
+    created: "2023-11-23T10:11:48.15383844+01:00"
+    description: A Helm chart for shields.io
+    digest: ef1a007f09d4617a1ae06d9065fbbf5ef5e2fdb830739a6b074068f82e393345
+    name: shieldsio
+    type: application
+    urls:
+    - shieldsio-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     appVersion: server-2023-09-04
     created: "2023-09-29T20:35:38.365825198Z"
     description: A Helm chart for shields.io
@@ -449,4 +459,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-23T10:09:43.034849525+01:00"
+generated: "2023-11-23T10:11:48.154035109+01:00"
