@@ -306,6 +306,16 @@ entries:
     version: 0.1.0
   plantuml:
   - apiVersion: v2
+    appVersion: v1.2023.12
+    created: "2023-11-23T10:09:43.034768766+01:00"
+    description: A Helm chart for PlantUML Server
+    digest: 23873835b27f0acf2f4ad8fbd09fc2800a72d80ce09af327bbfb06b0fa7ce65e
+    name: plantuml
+    type: application
+    urls:
+    - plantuml-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: v1.2023.10
     created: "2023-09-29T20:35:38.202734624Z"
     description: A Helm chart for PlantUML Server
@@ -439,4 +449,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-23T10:03:24.702565455+01:00"
+generated: "2023-11-23T10:09:43.034849525+01:00"
