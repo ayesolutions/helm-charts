@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   drawio:
   - apiVersion: v2
+    appVersion: 24.4.8
+    created: "2024-05-25T15:57:43.340159729Z"
+    description: A Helm chart for draw.io
+    digest: ee039208d181712b1ca5cc007addc6aa942560a1730da95440d04e4c2dcb52e3
+    name: drawio
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/drawio-1.3.0/drawio-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     appVersion: 22.1.3
     created: "2023-11-23T09:55:10.236984104+01:00"
     description: A Helm chart for draw.io
@@ -252,6 +262,16 @@ entries:
     version: 0.1.0
   kroki:
   - apiVersion: v2
+    appVersion: 0.25.0
+    created: "2024-05-25T15:57:43.425717254Z"
+    description: A Helm chart for Kroki Diagrams
+    digest: 7705f3641bd23fba0ac3270e9480f3a76177dfb19b995732ea2bc3ba4eb43334
+    name: kroki
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/kroki-1.3.0/kroki-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     appVersion: 0.23.0
     created: "2023-09-29T20:35:37.96479307Z"
     description: A Helm chart for Kroki Diagrams
@@ -306,6 +326,16 @@ entries:
     version: 0.1.0
   plantuml:
   - apiVersion: v2
+    appVersion: v1.2024.4
+    created: "2024-05-25T15:57:43.536948303Z"
+    description: A Helm chart for PlantUML Server
+    digest: 280004b9e2054d7d2cae1f9178f9ba93238045cdb053f6ab0912c1b937c52808
+    name: plantuml
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/plantuml-1.3.0/plantuml-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
     appVersion: v1.2023.12
     created: "2023-11-23T10:09:43.034768766+01:00"
     description: A Helm chart for PlantUML Server
@@ -336,6 +366,16 @@ entries:
     - plantuml-0.2.1.tgz
     version: 0.2.1
   shieldsio:
+  - apiVersion: v2
+    appVersion: server-2024-05-01
+    created: "2024-05-25T15:57:43.638644943Z"
+    description: A Helm chart for shields.io
+    digest: 1e12ded340268fc71b92bfee65ccb531a6318b304b12cc3b46ec6354e33604b2
+    name: shieldsio
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/shieldsio-1.3.0/shieldsio-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v2
     appVersion: server-2023-11-01
     created: "2023-11-23T10:11:48.15383844+01:00"
@@ -459,4 +499,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-23T10:11:48.154035109+01:00"
+generated: "2024-05-25T15:57:43.638803117Z"
