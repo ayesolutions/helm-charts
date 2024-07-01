@@ -468,6 +468,23 @@ entries:
     urls:
     - https://github.com/ayesolutions/helm-charts/releases/download/synapse-0.1.0/synapse-0.1.0.tgz
     version: 0.1.0
+  vaultwarden:
+  - apiVersion: v2
+    appVersion: 1.30.5
+    created: "2024-07-01T00:38:33.992833711Z"
+    dependencies:
+    - alias: postgresql
+      condition: postgresql.enabled
+      name: postgresql-ha
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.2.7
+    description: A Helm chart for Kubernetes
+    digest: 199c1f92b8ae0063e4eaa83d6a253a232095a78424893e79dfa06fdc3074d64e
+    name: vaultwarden
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/vaultwarden-0.1.0/vaultwarden-0.1.0.tgz
+    version: 0.1.0
   wg-gen-web:
   - apiVersion: v2
     appVersion: sha-4fd1e34f
@@ -499,4 +516,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-05-25T15:57:43.638803117Z"
+generated: "2024-07-01T00:38:33.992893983Z"
