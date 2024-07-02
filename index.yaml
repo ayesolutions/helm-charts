@@ -148,6 +148,14 @@ entries:
     urls:
     - https://github.com/ayesolutions/helm-charts/releases/download/hcloud-cloud-controller-manager-1.19.0-patched/hcloud-cloud-controller-manager-1.19.0-patched.tgz
     version: 1.19.0-patched
+  - apiVersion: v2
+    created: "2024-07-02T17:36:20.824896691Z"
+    digest: b5fd0de8b813e8dc75a63d15d3c978049f12d6f6b5eac5a30a19bae7f91d30d4
+    name: hcloud-cloud-controller-manager
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/hcloud-cloud-controller-manager-1.19.0-patched/hcloud-cloud-controller-manager-1.19.0-patched.tgz
+    version: 1.19.0-patched
   hedgedoc:
   - apiVersion: v2
     appVersion: 1.9.9
@@ -549,4 +557,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-02T17:27:50.379989289Z"
+generated: "2024-07-02T17:36:20.824968394Z"
