@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mumble.fullname" . }}
+  labels:
+    {{- include "mumble.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.controlPort }}
+      targetPort: control
+      protocol: TCP
+      name: control
+    - port: {{ .Values.service.speakPort }}
+      targetPort: speak
+      protocol: UDP
+      name: speak
+  selector:
+    {{- include "mumble.selectorLabels" . | nindent 4 }}
