@@ -346,6 +346,17 @@ entries:
     urls:
     - https://github.com/ayesolutions/helm-charts/releases/download/mosquitto-0.1.0/mosquitto-0.1.0.tgz
     version: 0.1.0
+  mumble:
+  - apiVersion: v2
+    appVersion: v1.5.634
+    created: "2024-07-14T13:58:37.726126103Z"
+    description: A Helm chart for mumble
+    digest: 1fd1dd38ec5c8c693847dcf70c4e7b8d1320123ebb4c5bf189d9c5748909706e
+    name: mumble
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/mumble-0.1.0/mumble-0.1.0.tgz
+    version: 0.1.0
   nodered:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -504,6 +515,22 @@ entries:
   vaultwarden:
   - apiVersion: v2
     appVersion: 1.30.5
+    created: "2024-07-14T13:58:37.841691328Z"
+    dependencies:
+    - alias: postgresql
+      condition: postgresql.enabled
+      name: postgresql-ha
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.2.7
+    description: A Helm chart for Kubernetes
+    digest: 85e854455801e95e54fa9da1ecc900339e05f9d9a4f1755c1db68c56d2cef455
+    name: vaultwarden
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/vaultwarden-0.1.2/vaultwarden-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.30.5
     created: "2024-07-01T02:00:45.478408047Z"
     dependencies:
     - alias: postgresql
@@ -565,4 +592,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-02T17:42:32.745302073Z"
+generated: "2024-07-14T13:58:37.84176197Z"
