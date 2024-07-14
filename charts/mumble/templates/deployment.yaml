@@ -56,12 +56,9 @@ spec:
                   {{- end }}
                   key: user-password
           ports:
-            - name: control
+            - name: ctl-speak
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-            - name: speak
-              containerPort: {{ .Values.service.port }}
-              protocol: UDP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:

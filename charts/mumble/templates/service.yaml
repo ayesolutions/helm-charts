@@ -11,19 +11,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: control
-      {{- if .Values.service.nodePort }}
-      nodePort: {{ .Values.service.nodePort }}
-      {{- end }}
+    - name: ctl-speak
+      targetPort: ctl-speak
       protocol: TCP
-      name: control
-    - port: {{ .Values.service.port }}
-      targetPort: speak
-      {{- if .Values.service.nodePort }}
-      nodePort: {{ .Values.service.nodePort }}
-      {{- end }}
-      protocol: UDP
-      name: speak
+      port: {{ .Values.service.port }}
   selector:
     {{- include "mumble.selectorLabels" . | nindent 4 }}
