@@ -11,12 +11,18 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.controlPort }}
+    - port: {{ .Values.service.port }}
       targetPort: control
+      {{- if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
       protocol: TCP
       name: control
-    - port: {{ .Values.service.speakPort }}
+    - port: {{ .Values.service.port }}
       targetPort: speak
+      {{- if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+      {{- end }}
       protocol: UDP
       name: speak
   selector:

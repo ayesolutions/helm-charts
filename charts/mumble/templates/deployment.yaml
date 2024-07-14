@@ -57,10 +57,10 @@ spec:
                   key: user-password
           ports:
             - name: control
-              containerPort: {{ .Values.service.controlPort }}
+              containerPort: {{ .Values.service.port }}
               protocol: TCP
             - name: speak
-              containerPort: {{ .Values.service.speakPort }}
+              containerPort: {{ .Values.service.port }}
               protocol: UDP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

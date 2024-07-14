@@ -42,8 +42,8 @@ securityContext:
 service:
   type: ClusterIP
   annotations: {}
-  controlPort: 64738
-  speakPort: 64738
+  port: 64738
+  nodePort: ""
 
 mumble:
   existingSecret: ""
