@@ -349,6 +349,16 @@ entries:
   mumble:
   - apiVersion: v2
     appVersion: v1.5.634
+    created: "2024-07-14T21:37:47.968620049Z"
+    description: A Helm chart for mumble
+    digest: 3f04082b94cd78fd29bca8c5cad34ad1745387f147a0216fb0df3ad8dddc9b1c
+    name: mumble
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/mumble-0.1.4/mumble-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: v1.5.634
     created: "2024-07-14T14:44:08.220470074Z"
     description: A Helm chart for mumble
     digest: 5d074f61963bef3aa9c8203e705bf174f5062fa54985ba9febf337c984faba8f
@@ -622,4 +632,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-14T14:44:08.220566455Z"
+generated: "2024-07-14T21:37:47.96870031Z"
