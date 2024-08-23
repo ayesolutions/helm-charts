@@ -554,6 +554,22 @@ entries:
     version: 0.1.0
   vaultwarden:
   - apiVersion: v2
+    appVersion: 1.32.0
+    created: "2024-08-23T17:33:17.958307514Z"
+    dependencies:
+    - alias: postgresql
+      condition: postgresql.enabled
+      name: postgresql-ha
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.2.7
+    description: A Helm chart for Kubernetes
+    digest: 214423423330bb8f026c945b85e4aebb4562f4a34ffde009810e90f68925c559
+    name: vaultwarden
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/vaultwarden-0.2.0/vaultwarden-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     appVersion: 1.30.5
     created: "2024-07-14T13:58:37.841691328Z"
     dependencies:
@@ -632,4 +648,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-14T21:37:47.96870031Z"
+generated: "2024-08-23T17:33:17.958395228Z"
