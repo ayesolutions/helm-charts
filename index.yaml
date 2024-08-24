@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   drawio:
   - apiVersion: v2
+    appVersion: 24.7.5
+    created: "2024-08-24T11:37:22.959232527Z"
+    description: A Helm chart for draw.io
+    digest: 7e0fa65882aef1bf01be0b89f3a647e1bc474bbae9fd9cf32fa3f74e6cd5d582
+    name: drawio
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/drawio-1.4.0/drawio-1.4.0.tgz
+    version: 1.4.0
+  - apiVersion: v2
     appVersion: 24.4.8
     created: "2024-05-25T15:57:43.340159729Z"
     description: A Helm chart for draw.io
@@ -410,6 +420,16 @@ entries:
     version: 0.1.0
   plantuml:
   - apiVersion: v2
+    appVersion: 1.2024.6
+    created: "2024-08-24T11:37:23.095508183Z"
+    description: A Helm chart for PlantUML Server
+    digest: bd76156956cd29fe5f936ff345efc4bb9981f72e7ece63c7f0406c7c099830ee
+    name: plantuml
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/plantuml-1.4.0/plantuml-1.4.0.tgz
+    version: 1.4.0
+  - apiVersion: v2
     appVersion: v1.2024.4
     created: "2024-05-25T15:57:43.536948303Z"
     description: A Helm chart for PlantUML Server
@@ -450,6 +470,16 @@ entries:
     - plantuml-0.2.1.tgz
     version: 0.2.1
   shieldsio:
+  - apiVersion: v2
+    appVersion: server-2024-08-01
+    created: "2024-08-24T11:37:23.192925451Z"
+    description: A Helm chart for shields.io
+    digest: 5592cce16fcb12df8527d514ef87353620b3d7b18eaacc4209f881e9af81d270
+    name: shieldsio
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/shieldsio-1.4.0/shieldsio-1.4.0.tgz
+    version: 1.4.0
   - apiVersion: v2
     appVersion: server-2024-05-01
     created: "2024-05-25T15:57:43.638644943Z"
@@ -648,4 +678,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-08-23T17:33:17.958395228Z"
+generated: "2024-08-24T11:37:23.193186115Z"
