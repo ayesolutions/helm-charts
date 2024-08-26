@@ -420,6 +420,16 @@ entries:
     version: 0.1.0
   plantuml:
   - apiVersion: v2
+    appVersion: v1.2024.6
+    created: "2024-08-26T05:11:18.858959406Z"
+    description: A Helm chart for PlantUML Server
+    digest: 963435cccd383d7dabed1c554df69614e3684b0e5bf369286406d7f911f1689f
+    name: plantuml
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/plantuml-1.4.1/plantuml-1.4.1.tgz
+    version: 1.4.1
+  - apiVersion: v2
     appVersion: 1.2024.6
     created: "2024-08-24T11:37:23.095508183Z"
     description: A Helm chart for PlantUML Server
@@ -678,4 +688,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-08-24T11:37:23.193186115Z"
+generated: "2024-08-26T05:11:18.859080014Z"
