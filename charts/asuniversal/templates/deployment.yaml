@@ -1,0 +1,84 @@
+{{- $deploymentName := .Values.deploymentName }}
+{{- if or (eq .Values.deploymentType "Deployment") (eq .Values.deploymentType "StatefulSet") -}}
+{{- $defaultSecurityContext := .Values.containerSecurityContext }}
+{{- $defaultResources := .Values.containerResources }}
+apiVersion: apps/v1
+kind: {{ .Values.deploymentType }}
+metadata:
+  name: {{ include "asuniversal.fullname" . }}
+  labels:
+    {{- include "asuniversal.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "asuniversal.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "asuniversal.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "asuniversal.serviceAccountName" . }}
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.podInitContainers }}
+      initContainers:
+        {{- range .Values.podExtraContainers }}
+        - name: {{ .name | default $deploymentName }}
+          {{- $initContainerData := dict "container" . "defaultSecurityContext" $defaultSecurityContext "defaultResources" $defaultResources }}
+          {{ include "asuniversal.containerExtras" $initContainerData }}
+        {{- end }}
+      {{- end }}
+      containers:
+        - name: {{ .Values.podContainer.name | default $deploymentName }}
+          {{- $podContainerData := dict "container" .Values.podContainer "defaultSecurityContext" .Values.containerSecurityContext "defaultResources" .Values.containerResources }}
+          {{ include "asuniversal.containerExtras" $podContainerData }}
+        {{- range .Values.podExtraContainers }}
+        - name: {{ .name | default $deploymentName }}
+          {{- $podContainerExtraData := dict "container" . "defaultSecurityContext" $defaultSecurityContext "defaultResources" $defaultResources }}
+          {{ include "asuniversal.containerExtras" $podContainerExtraData }}
+        {{- end }}
+      {{- if or .Values.persistence.claims .Values.persistence.volumes }}
+      volumes:
+        {{- range .Values.persistence.claims }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ .name }}
+        {{- end }}
+        {{- if .Values.persistence.volumes }}
+        {{- toYaml .Values.persistence.volumes | nindent 8 }}
+        {{- end }}
+      {{- end }}
+      {{- with .Values.podNodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.podAffinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.podTolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  {{- if eq .Values.deploymentType "StatefulSet" }}
+  serviceName: {{ include "asuniversal.fullname" . }}
+  volumeClaimTemplates:
+    - {{ include "asuniversal.persistenceClaim" . | indent 6 | trim }}
+  {{- end }}
+{{- end }}

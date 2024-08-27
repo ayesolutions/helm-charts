@@ -1,0 +1,236 @@
+# Default values for asuniversal.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+## globals
+
+# deployment name
+deploymentName: example
+
+# define secret names. secret must contain .dockerconfigjson data
+imagePullSecrets: []
+  # - dockerio-user
+
+# override deployment full name
+fullnameOverride: ""
+
+# deployment type. can be Deployment, TODO: StatefulSet
+#deploymentType: StatefulSet
+deploymentType: Deployment
+
+# HPA replica count
+replicaCount: 1
+
+# HPA autoscaling
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+# pod annotations
+podAnnotations: {}
+
+# pod labels
+podLabels: {}
+
+# pod security
+podSecurityContext: {}
+  # fsGroup: 2000
+
+# node selector
+podNodeSelector: {}
+
+# toleration rules
+podTolerations: []
+
+# pod affinity
+podAffinity: {}
+
+# init containers. see podContainer for definitions.
+podInitContainers:
+  - name: "init-nginx"
+    image:
+      repository: nginx
+
+# deployment containers
+podContainer:
+  # container name. default is deployment name.
+  name: ""
+
+  image:
+    repository: nginx
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+
+  # environment variables. see https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+  env: []
+
+  # override command
+  command: []
+
+  # override arguments
+  args: []
+
+  # health check see https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+  livenessProbe:
+    httpGet:
+      path: /
+      port: http
+
+  # health check see https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+  readinessProbe:
+    httpGet:
+      path: /
+      port: http
+
+  # overrides security context definition defaults from below
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+
+  # override resources
+  resources: {}
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  # define volume mounts
+  volumeMounts: []
+    # - name: foo
+    #   mountPath: "/etc/foo"
+    #   readOnly: true
+
+  # define service ports
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+
+# extra containers. see podContainer for definitions.
+podExtraContainers:
+  - name: "extra-nginx"
+    image:
+      repository: nginx
+    ports:
+      - name: http
+        port: 80
+        protocol: TCP
+
+# security context definition defaults from below. applied to all containers.
+containerSecurityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+# restrict hardware usage. applied to all containers.
+containerResources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# service account for deployment
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  overrideName: ""
+
+# service resource. NOTICE: ports fetched from podContainers
+service:
+  enabled: true
+  type: ClusterIP
+
+ingress:
+  # enable ingress
+  enabled: false
+
+  # ingress class name
+  className: ""
+
+  # certmanager support
+  certManager:
+    enabled: false
+    type: cluster
+    issuer: test
+
+  # ingress annotations
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+
+  # hosts
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+  # tls
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+# persistence layer
+persistence:
+  # storage class
+  storageClass: ""
+  annotations: {}
+  preserve: true
+  # generated PersistenceVolumeClaims
+  claims:
+    - name: data
+      accessMode: ReadWriteOnce
+      size: 100Mi
+      storageClass: ""
+      existingClaim: ""
+
+  # Additional volumes see https://kubernetes.io/docs/concepts/storage/volumes/
+  volumes: []
+  # - name: foo
+  #   secret:
+  #     secretName: mysecret
+  #     optional: false
+
+## database provider
+database:
+  # embedded postgresql
+  postgres:
+    enabled: false
+  # TODO: add more provider
+
+## cache provider
+cache:
+  # embedded redis
+  redis:
+    enabled: true
+  # TODO: add more provider

@@ -1,0 +1,29 @@
+{{- if .Values.service.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "asuniversal.fullname" . }}
+  labels:
+    {{- include "asuniversal.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  {{- if .Values.podContainer.ports }}
+  ports:
+    {{- range .Values.podContainer.ports }}
+    - port: {{ .port }}
+      targetPort: {{ .name }}
+      protocol: {{ .protocol }}
+      name: {{ .name }}
+    {{- end }}
+    {{- range .Values.podExtraContainers }}
+    {{- range .ports }}
+    - port: {{ .port }}
+      targetPort: {{ .name }}
+      protocol: {{ .protocol }}
+      name: {{ .name }}
+    {{- end }}
+    {{- end }}
+  {{- end }}
+  selector:
+    {{- include "asuniversal.selectorLabels" . | nindent 4 }}
+{{- end }}
