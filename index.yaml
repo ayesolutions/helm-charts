@@ -2,6 +2,21 @@ apiVersion: v1
 entries:
   asuniversal:
   - apiVersion: v2
+    created: "2024-08-27T14:54:39.066142511Z"
+    dependencies:
+    - alias: postgres
+      condition: database.postgres.enabled
+      name: postgresql-ha
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.2.7
+    description: A Helm chart for Kubernetes
+    digest: 1970379f63d315f15b5607e804485ba03a74fa4d06750cf48f7e70795168d1c4
+    name: asuniversal
+    type: application
+    urls:
+    - https://github.com/ayesolutions/helm-charts/releases/download/asuniversal-0.1.3/asuniversal-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2024-08-27T14:38:12.267463042Z"
     dependencies:
     - alias: postgres
@@ -734,4 +749,4 @@ entries:
     urls:
     - wg-gen-web-0.1.0.tgz
     version: 0.1.0
-generated: "2024-08-27T14:38:12.267575392Z"
+generated: "2024-08-27T14:54:39.066224765Z"
