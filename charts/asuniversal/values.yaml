@@ -14,8 +14,7 @@ imagePullSecrets: []
 # override deployment full name
 fullnameOverride: ""
 
-# deployment type. can be Deployment, TODO: StatefulSet
-#deploymentType: StatefulSet
+# deployment type. can be Deployment, StatefulSet
 deploymentType: Deployment
 
 # HPA replica count
@@ -49,10 +48,7 @@ podTolerations: []
 podAffinity: {}
 
 # init containers. see podContainer for definitions.
-podInitContainers:
-  - name: "init-nginx"
-    image:
-      repository: nginx
+podInitContainers: []
 
 # deployment containers
 podContainer:
@@ -115,20 +111,13 @@ podContainer:
     #   readOnly: true
 
   # define service ports
-  ports:
-    - name: http
-      port: 80
-      protocol: TCP
+  ports: []
+    # - name: http
+    #   port: 80
+    #   protocol: TCP
 
 # extra containers. see podContainer for definitions.
-podExtraContainers:
-  - name: "extra-nginx"
-    image:
-      repository: nginx
-    ports:
-      - name: http
-        port: 80
-        protocol: TCP
+podExtraContainers: []
 
 # security context definition defaults from below. applied to all containers.
 containerSecurityContext: {}
@@ -176,7 +165,7 @@ ingress:
   # ingress class name
   className: ""
 
-  # certmanager support
+  # cert-manager support
   certManager:
     enabled: false
     type: cluster
@@ -184,8 +173,6 @@ ingress:
 
   # ingress annotations
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
 
   # hosts
   hosts:
@@ -206,13 +193,13 @@ persistence:
   storageClass: ""
   annotations: {}
   preserve: true
-  # generated PersistenceVolumeClaims
-  claims:
-    - name: data
-      accessMode: ReadWriteOnce
-      size: 100Mi
-      storageClass: ""
-      existingClaim: ""
+  # generate PersistenceVolumeClaims
+  claims: []
+    # - name: data
+    #   accessMode: ReadWriteOnce
+    #   size: 100Mi
+    #   storageClass: ""
+    #   existingClaim: ""
 
   # Additional volumes see https://kubernetes.io/docs/concepts/storage/volumes/
   volumes: []
