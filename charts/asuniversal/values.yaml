@@ -9,7 +9,7 @@ deploymentName: example
 
 # define secret names. secret must contain .dockerconfigjson data
 imagePullSecrets: []
-  # - dockerio-user
+  # - name: dockerio-user
 
 # override deployment full name
 fullnameOverride: ""
@@ -85,9 +85,10 @@ podContainer:
   # overrides security context definition defaults from below
   securityContext: {}
     # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
+    #  drop:
+    #   - "ALL"
+    # readOnlyRootFilesystem: false
+    # allowPrivilegeEscalation: false
     # runAsNonRoot: true
     # runAsUser: 1000
 
@@ -122,9 +123,10 @@ podExtraContainers: []
 # security context definition defaults from below. applied to all containers.
 containerSecurityContext: {}
   # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
+  #  drop:
+  #   - "ALL"
+  # readOnlyRootFilesystem: false
+  # allowPrivilegeEscalation: false
   # runAsNonRoot: true
   # runAsUser: 1000
 
