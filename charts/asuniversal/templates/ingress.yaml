@@ -1,13 +1,12 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "asuniversal.fullname" . -}}
-{{- $svcPort := .Values.service.port -}}
+{{- $servicePort := (index .Values.podContainer.ports 0).port }}
 {{- $classNameSupported := semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion }}
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
   {{- $_ := set .Values.ingress.annotations "kubernetes.io/ingress.class" .Values.ingress.className}}
   {{- end }}
 {{- end }}
-
 {{- if .Values.ingress.certManager.enabled }}
   {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/tls-acme") }}
   {{- $_ := set .Values.ingress.annotations "kubernetes.io/tls-acme" "true" }}
@@ -20,7 +19,6 @@
   {{- end }}
   {{- end }}
 {{- end }}
-
 {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1
 {{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
@@ -66,10 +64,10 @@ spec:
               service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ $svcPort }}
+                  number: {{ $servicePort }}
               {{- else }}
               serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
+              servicePort: {{ $servicePort }}
               {{- end }}
           {{- end }}
     {{- end }}
