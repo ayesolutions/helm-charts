@@ -128,7 +128,7 @@ Create container extras
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ printf "%s-%s" $fullname .name | trimSuffix "-"  }}
+  name: data-{{ printf "%s-%s" $fullname .name | trimSuffix "-"  }}
   labels:
     {{- $labels | nindent 4 }}
   {{- with $annotations }}
